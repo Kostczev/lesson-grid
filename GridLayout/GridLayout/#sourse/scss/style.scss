@@ -1,0 +1,16 @@
+//сброс стандартной разметки
+@import "_nullstyle";
+//переменные
+@import "_vars";
+
+//body / wrapper / container
+@import "blocks/_palette";
+@import "blocks/_backbone";
+
+
+@import "blocks/_switch";
+@import "blocks/_header";
+@import "blocks/_content";
+@import "blocks/_tabs";
+
+@import "blocks/grids-lisson";

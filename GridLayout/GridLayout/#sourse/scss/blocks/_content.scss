@@ -1,0 +1,36 @@
+.content{
+   margin-top: 80px;
+}
+.section{
+   transition-property: background-color, color, border-color;
+   transition-duration: .3s;
+   margin-bottom: 30px;
+   padding: 10px 15px;
+   border: 1px solid;
+   border-radius: 5px;
+}
+h1{
+   font-size: 24px;
+   font-weight: 600;
+   margin: 20px 0;
+   text-align: center;
+}
+h2{
+   font-size: 20px;
+   font-weight: 600;
+   letter-spacing: 7px;
+   margin: 10px 0 20px 7px; //а почему? середина высчитывается вместе с отступом межбуквенным.. (лишним)
+   text-align: center;
+}
+p{
+   margin-bottom: 10px;
+   &:last-child{
+      margin-bottom: 0;
+   }
+}
+.text{
+   font-size: 16px;
+   text-align: justify;
+   line-height: 20px;
+   margin-bottom: 20px;
+}

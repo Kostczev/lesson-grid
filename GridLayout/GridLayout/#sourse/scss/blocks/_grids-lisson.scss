@@ -1,0 +1,56 @@
+.lisson-grid-item{
+   text-align: center;
+   padding: 10px;
+   border: 2px dashed;
+   transition: border-color .3s;
+   .dark-mode &{
+      border-color: $palette_1-color_4;
+   }
+   .light-mode &{
+      border-color: $palette_2-color_4;
+   }
+}
+.first-example-grids{
+   font-size: 18px;
+   &__grid{
+      display: grid;
+      margin-bottom: 10px;
+   }
+   &__inline-grid{
+      display: inline-grid;
+      margin-bottom: 10px;
+   }
+}
+.second-exemple-grids{
+   //padding-bottom: 10px;
+   display: grid;
+   &.exemple-1{
+      grid-template: 50px 30px / 100px 200px;
+   }
+   &.exemple-2{
+      grid-template: 30% 70% / 30% 50% ;
+   }
+   &.exemple-3{
+      grid-template: 2fr 1fr / 0.5fr 1fr;
+   }
+   &.exemple-4{
+      grid-template: 1fr 60px / 0.5fr 30%;
+   }
+}
+.third-exemple-grids{
+   display: grid;
+   grid-template-columns: 150px 1fr;
+   grid-template-rows: 50px 1fr;
+   grid-template-areas: 
+      "header header"
+      "side content";
+}
+.exemple-grid-header{
+   grid-area: header;
+}
+.exemple-grid-side{
+   grid-area: side;
+}
+.exemple-grid-content{
+   grid-area: content;
+}

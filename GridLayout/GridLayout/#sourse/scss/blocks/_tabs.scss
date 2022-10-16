@@ -1,0 +1,93 @@
+.tabs {
+   transition: background-color .3s;
+   border: 1px solid;
+   border-radius: 5px;
+   .dark-mode &{
+      border-color: $palette_1-color_4;
+      background-color: $palette_1-color_1;
+   }
+   .light-mode &{
+      border-color: $palette_2-color_4;
+      background-color: $palette_2-color_1;
+   }
+}
+.tabs-triggers {
+   display: flex;
+   position: relative;
+   &__item {
+      z-index: 1;
+      flex-grow: 1;
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 10px;
+      position: relative;
+      padding-left: 30px;
+      transition-property: background-color,color;
+      transition-duration: 0.3s;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      .dark-mode &{
+         color: $palette_1-color_5;
+      }
+      .light-mode &{
+         color: $palette_1-color_1;
+      }
+   }
+   &__active{
+      border: 1px solid;
+      border-bottom: none;
+      z-index: 2;
+      margin: -1px;
+      margin-bottom: 0;
+      .dark-mode &{
+         color:$palette_1-color_4;
+         border-color: $palette_1-color_4;
+         background-color: $palette_1-color_2;
+      }
+      .light-mode &{
+         color:$palette_2-color_4;
+         border-color: $palette_2-color_4;
+         background-color: $palette_2-color_2;
+      }
+   }
+   &__active::before{
+      content: '';
+      transition: background-color 0.3s;
+      z-index: 3;
+      width: 100%;
+      height: 3px;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      .dark-mode &{
+         background: $palette_1-color_2;
+      }
+      .light-mode &{
+         background: $palette_2-color_2;
+      }
+   }
+}
+.tabs-content {
+   transition: background-color 0.3s;
+   border: 1px solid;
+   position: relative;
+   z-index: 1;
+   margin: -1px;
+   border-radius: 5px;
+   &__item {
+      display: none;
+      padding: 10px;
+   }
+   &__item.active{
+      display: block;
+   }
+   .dark-mode &{
+      border-color: $palette_1-color_4;
+      background-color: $palette_1-color_2;
+   }
+   .light-mode &{
+      border-color: $palette_2-color_4;
+      background-color: $palette_2-color_2;
+   }
+}

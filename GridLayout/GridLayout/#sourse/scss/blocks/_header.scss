@@ -1,0 +1,74 @@
+header{
+   position: fixed;
+   width: 100%;
+   z-index: 20;
+   border-top: 1px solid;
+   border-bottom: 1px solid;
+   transition-duration: 0.3s;
+   transition-property: border, background-color, transform, color;
+   &.header-hidden{
+      transform: translateY(-62px);
+   }
+}
+.header-container {
+   display: flex;
+   align-items: center;
+   &__button {
+      width: 140px;
+      text-align: center;
+      transition-property: background-color, color;
+      transition-duration: .3s;
+      font-size: 20px;
+      padding: 20px 10px;
+   }
+   &__title {
+      flex: 1 1 auto;
+      font-size: 25px;
+      letter-spacing: 10px;
+      position: relative;
+      padding-left: 10px;
+      &::before,&::after{
+         content: '';
+         transition: background-color .3s;
+         height: 35px;
+         width: 2px;
+         position: absolute;
+         top: -4px;
+      }
+      .dark-mode &::before, .dark-mode &::after{
+         background-color: $palette_1-color_5;
+      }
+      .light-mode &::before, .light-mode &::after{
+         background-color: $palette_2-color_5;
+      }
+      &::before{
+         left: 0;
+      }
+      &::after{
+         right: 0;
+      }
+   }
+   &__hidden-settings{
+      transition: 0.3s ease;
+      max-width: 0;
+      overflow: hidden;
+   }
+   &__setting-button {
+      transition-property: background-color;
+      transition-duration: .3s;
+      padding: 11.5px 10px;
+      cursor: pointer;
+      & img{
+         width: 35px;
+         max-width: 100%;
+      }
+      & svg {
+         width: 35px;
+         height: 35px;
+         & path{
+            transition: fill .3s;
+            max-width: 100%;
+         }
+      }
+   }
+}

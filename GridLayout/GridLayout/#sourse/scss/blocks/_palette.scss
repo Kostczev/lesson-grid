@@ -1,0 +1,47 @@
+.light-circuit{
+   .light-mode &{
+      background-color: $palette_2-color_1;
+      border-color: $palette_2-color_4;
+      color: $palette_2-color_5;
+      & .button{
+         color: $palette_2-color_5;
+         &:hover{
+            background-color: $palette_2-color_3;
+            color: $palette_2-color_4;
+         }
+         & svg path{
+            fill: $palette_2-color_5;
+         }
+         &:hover svg path{
+            fill: $palette_2-color_4;
+         }
+      }
+   } 
+   .dark-mode &{
+      background-color: $palette_1-color_1;
+      border-color: $palette_1-color_4;
+      color: $palette_1-color_5;
+      & .button{
+         color: $palette_1-color_5;
+         &:hover{
+            background-color: $palette_1-color_3;
+            color: $palette_1-color_4;
+         }
+         & svg path{
+            fill: $palette_1-color_5;
+         }
+         &:hover svg path{
+            fill: $palette_1-color_4;
+         }
+      }
+   } 
+}
+
+.color-text{
+   .dark-mode &{
+      color: $palette_1-color_4;
+   }
+   .light-mode &{
+      color: $palette_2-color_4;
+   }
+}

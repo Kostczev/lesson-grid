@@ -1,0 +1,499 @@
+@charset "UTF-8";
+/*отступы*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/*перещет области*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*отключение обводки*/
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+/*делаем блочными некоторые теги*/
+nav, footer, header, aside {
+  display: block;
+}
+
+/*Уравниваем поведение шрифтов и тд для разных браузеров (также запрещает самовольное увеличени шрифтов (айфон))*/
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/*Говоорим тегам наследовать семейство шрифта*/
+input, button, textarea {
+  font-family: inherit;
+  display: block;
+}
+
+/*еще куча фич, таких как отклчение крестиков и отступов в разных браузерах*/
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+/*Обнуляем все заголовки*/
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.light-mode .light-circuit {
+  background-color: #769FCD;
+  border-color: #590D82;
+  color: #000;
+}
+.light-mode .light-circuit .button {
+  color: #000;
+}
+.light-mode .light-circuit .button:hover {
+  background-color: #D6E6F2;
+  color: #590D82;
+}
+.light-mode .light-circuit .button svg path {
+  fill: #000;
+}
+.light-mode .light-circuit .button:hover svg path {
+  fill: #590D82;
+}
+.dark-mode .light-circuit {
+  background-color: #1B262C;
+  border-color: #4ECCA3;
+  color: #EEEEEE;
+}
+.dark-mode .light-circuit .button {
+  color: #EEEEEE;
+}
+.dark-mode .light-circuit .button:hover {
+  background-color: #393E46;
+  color: #4ECCA3;
+}
+.dark-mode .light-circuit .button svg path {
+  fill: #EEEEEE;
+}
+.dark-mode .light-circuit .button:hover svg path {
+  fill: #4ECCA3;
+}
+
+.dark-mode .color-text {
+  color: #4ECCA3;
+}
+.light-mode .color-text {
+  color: #590D82;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.wrapper {
+  transition-property: background-color;
+  transition: 0.3s;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper.light-mode {
+  background-color: #B9D7EA;
+}
+.wrapper.dark-mode {
+  background-color: #232931;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+  transition: max-width 0.3s ease;
+}
+@media (max-width: 1200px) {
+  .container {
+    max-width: 970px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 750px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: none;
+  }
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.cursor-ignor {
+  cursor: inherit;
+}
+
+.margin-bot-15px {
+  margin-bottom: 10px;
+}
+
+.switch {
+  text-align: center;
+}
+
+.switch-btn {
+  display: inline-block;
+  width: 72px; /* ширина */
+  height: 38px; /* высота */
+  border-radius: 19px; /* радиус скругления */
+  background: #590D82; /* цвет фона */
+  z-index: 0;
+  margin: 10px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.3s;
+}
+.switch-btn::after {
+  content: "";
+  height: 32px; /* высота кнопки */
+  width: 32px; /* ширина кнопки */
+  border-radius: 50%;
+  background: #769FCD; /* цвет кнопки */
+  top: 3px; /* положение кнопки по вертикали относительно основы */
+  left: 3px; /* положение кнопки по горизонтали относительно основы */
+  transition-duration: 0.3s;
+  position: absolute;
+  z-index: 1;
+}
+.switch-btn:hover {
+  box-shadow: 0 0 0px 1px #590D82;
+}
+
+.switch-on {
+  background: #4ECCA3;
+}
+.switch-on::after {
+  left: 37px;
+  background: #1B262C; /* цвет кнопки */
+}
+.switch-on:hover {
+  box-shadow: 0 0 0px 1px #4ECCA3;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  transition-duration: 0.3s;
+  transition-property: border, background-color, transform, color;
+}
+header.header-hidden {
+  transform: translateY(-62px);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+.header-container__button {
+  width: 140px;
+  text-align: center;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  padding: 20px 10px;
+}
+.header-container__title {
+  flex: 1 1 auto;
+  font-size: 25px;
+  letter-spacing: 10px;
+  position: relative;
+  padding-left: 10px;
+}
+.header-container__title::before, .header-container__title::after {
+  content: "";
+  transition: background-color 0.3s;
+  height: 35px;
+  width: 2px;
+  position: absolute;
+  top: -4px;
+}
+.dark-mode .header-container__title::before, .dark-mode .header-container__title::after {
+  background-color: #EEEEEE;
+}
+.light-mode .header-container__title::before, .light-mode .header-container__title::after {
+  background-color: #000;
+}
+.header-container__title::before {
+  left: 0;
+}
+.header-container__title::after {
+  right: 0;
+}
+.header-container__hidden-settings {
+  transition: 0.3s ease;
+  max-width: 0;
+  overflow: hidden;
+}
+.header-container__setting-button {
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  padding: 11.5px 10px;
+  cursor: pointer;
+}
+.header-container__setting-button img {
+  width: 35px;
+  max-width: 100%;
+}
+.header-container__setting-button svg {
+  width: 35px;
+  height: 35px;
+}
+.header-container__setting-button svg path {
+  transition: fill 0.3s;
+  max-width: 100%;
+}
+
+.content {
+  margin-top: 80px;
+}
+
+.section {
+  transition-property: background-color, color, border-color;
+  transition-duration: 0.3s;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 20px 0;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 7px;
+  margin: 10px 0 20px 7px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 10px;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+.text {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  transition: background-color 0.3s;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.dark-mode .tabs {
+  border-color: #4ECCA3;
+  background-color: #1B262C;
+}
+.light-mode .tabs {
+  border-color: #590D82;
+  background-color: #769FCD;
+}
+
+.tabs-triggers {
+  display: flex;
+  position: relative;
+}
+.tabs-triggers__item {
+  z-index: 1;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px;
+  position: relative;
+  padding-left: 30px;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+}
+.dark-mode .tabs-triggers__item {
+  color: #EEEEEE;
+}
+.light-mode .tabs-triggers__item {
+  color: #1B262C;
+}
+.tabs-triggers__active {
+  border: 1px solid;
+  border-bottom: none;
+  z-index: 2;
+  margin: -1px;
+  margin-bottom: 0;
+}
+.dark-mode .tabs-triggers__active {
+  color: #4ECCA3;
+  border-color: #4ECCA3;
+  background-color: #232931;
+}
+.light-mode .tabs-triggers__active {
+  color: #590D82;
+  border-color: #590D82;
+  background-color: #B9D7EA;
+}
+.tabs-triggers__active::before {
+  content: "";
+  transition: background-color 0.3s;
+  z-index: 3;
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+}
+.dark-mode .tabs-triggers__active::before {
+  background: #232931;
+}
+.light-mode .tabs-triggers__active::before {
+  background: #B9D7EA;
+}
+
+.tabs-content {
+  transition: background-color 0.3s;
+  border: 1px solid;
+  position: relative;
+  z-index: 1;
+  margin: -1px;
+  border-radius: 5px;
+}
+.tabs-content__item {
+  display: none;
+  padding: 10px;
+}
+.tabs-content__item.active {
+  display: block;
+}
+.dark-mode .tabs-content {
+  border-color: #4ECCA3;
+  background-color: #232931;
+}
+.light-mode .tabs-content {
+  border-color: #590D82;
+  background-color: #B9D7EA;
+}
+
+.lisson-grid-item {
+  text-align: center;
+  padding: 10px;
+  border: 2px dashed;
+  transition: border-color 0.3s;
+}
+.dark-mode .lisson-grid-item {
+  border-color: #4ECCA3;
+}
+.light-mode .lisson-grid-item {
+  border-color: #590D82;
+}
+
+.first-example-grids {
+  font-size: 18px;
+}
+.first-example-grids__grid {
+  display: grid;
+  margin-bottom: 10px;
+}
+.first-example-grids__inline-grid {
+  display: inline-grid;
+  margin-bottom: 10px;
+}
+
+.second-exemple-grids {
+  display: grid;
+}
+.second-exemple-grids.exemple-1 {
+  grid-template: 50px 30px/100px 200px;
+}
+.second-exemple-grids.exemple-2 {
+  grid-template: 30% 70%/30% 50%;
+}
+.second-exemple-grids.exemple-3 {
+  grid-template: 2fr 1fr/0.5fr 1fr;
+}
+.second-exemple-grids.exemple-4 {
+  grid-template: 1fr 60px/0.5fr 30%;
+}
+
+.third-exemple-grids {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "header header" "side content";
+}
+
+.exemple-grid-header {
+  grid-area: header;
+}
+
+.exemple-grid-side {
+  grid-area: side;
+}
+
+.exemple-grid-content {
+  grid-area: content;
+}
